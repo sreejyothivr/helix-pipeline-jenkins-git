@@ -14,7 +14,7 @@ import io.percy.selenium.Percy;
 public class Example {
 	
 	@Test
-	public void getstring_prefix()
+	public void getstring_prefix60()
 	{
 		
 		 ChromeOptions chromeOptions =new ChromeOptions();
@@ -26,7 +26,7 @@ public class Example {
 	  }
 	
 	@Test
-	public void getUrl_prefix()
+	public void getUrl_prefix61()
 	{
 		
 		 ChromeOptions chromeOptions =new ChromeOptions();
