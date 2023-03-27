@@ -1,0 +1,35 @@
+pipeline {
+
+    agent any
+
+
+    parameters {
+       
+         string(name: 'automationSuite', defaultValue: 'Framework Test Suite', description: 'Automation suite name')
+         string(name: 'automationId', defaultValue: '10', description: 'Automation suite id')
+         choice(name: 'TEST_SUITE', choices:['integration_test.xml'], description: 'Test Suite to be executed')
+         string(name: 'branch', defaultValue: 'main branch', description: 'Branch name')
+    }
+
+    stages {
+        stage('run integration test') {
+            steps {
+
+                bat "mvn test -Dtestng.suitexml=${params.TEST_SUITE} -Dtest.url.base=${params.TargetURL}"
+            }
+        }
+
+    }
+
+    post{
+       always {
+
+
+        halm_report automationSuite: "${params.automationSuite}",
+         automationSuiteID:"${params.automationId}", halmConnectionID: 'b974f013-8bd7-40ca-82a2-b3970c0b8276', projectID: '{a062321e-26cb-4e60-b955-5409606b35c2}', testFileFormat: '0', testFilePattern: 'target\\surefire-reports\\junitreports\\TEST-Pipelinescript.Example.xml'
+       }
+    }
+
+}
+
+
