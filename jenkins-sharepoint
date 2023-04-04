@@ -15,7 +15,7 @@ stages {
 stage('run integration test') {
 steps {
 
-sh "mvn test -Dtestng.suitexml=${params.TEST_SUITE} -Dtest.url.base=${params.TargetURL}"
+bat "mvn test -Dtestng.suitexml=${params.TEST_SUITE} -Dtest.url.base=${params.TargetURL}"
 }
 }
 
