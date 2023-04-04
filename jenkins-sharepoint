@@ -24,7 +24,7 @@ bat "mvn test -Dtestng.suitexml=${params.TEST_SUITE} -Dtest.url.base=${params.Ta
 post{
 
 always {
-sh '''response=$(curl -X POST \\
+bat '''response=$(curl -X POST \\
 https://accounts.accesscontrol.windows.net/986f6ef3-b794-46b5-9afc-473c0d04f649/tokens/OAuth/2/ \\
 -H \'Content-Type: multipart/form-data\' \\
 -F \'grant_type=client_credentials\' \\
